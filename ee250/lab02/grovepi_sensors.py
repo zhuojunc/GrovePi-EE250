@@ -16,6 +16,7 @@ performance. Because of this, you will not find this in the default directories.
 """
 import sys
 import time
+from grove_rgb_lcd import *
 # By appending the folder of all the GrovePi libraries to the system path here,
 # we are successfully `import grovepi`
 sys.path.append('../../Software/Python/')
@@ -28,11 +29,25 @@ import grovepi
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
 be true"""
 if __name__ == '__main__':
+    
     PORT = 4    # D4
+    rotary  = 2     # A2
 
     while True:
         #So we do not poll the sensors too quickly which may introduce noise,
         #sleep for a reasonable time of 200ms between each iteration.
         time.sleep(0.2)
 
-        print(grovepi.ultrasonicRead(PORT))
+        distance = grovepi.ultrasonicRead(PORT)
+	potentiometer = grovepi.analogRead(rotary)
+	threshold = potentiometer
+
+	if threshold <  distance:
+		setRGB(0,255,0)
+		setText_norefresh(str(threshold) + "cm\n" + str(distance) + "cm")
+	else:
+		setRGB(255,0,0)
+		setText_norefresh(str(threshold) + "cm  OBJ PRES\n" + str(distance) + "cm")
+
+
+
