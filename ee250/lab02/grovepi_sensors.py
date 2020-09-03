@@ -3,9 +3,9 @@
 List team members here.
 
 Insert Github repository link here.
-"""
+"https://github.com/zhuojunc/GrovePi-EE250/tree/lab02/ee250/lab02"
 
-"""python3 interpreters in Ubuntu (and other linux distros) will look in a 
+""python3 interpreters in Ubuntu (and other linux distros) will look in a 
 default set of directories for modules when a program tries to `import` one. 
 Examples of some default directories are (but not limited to):
   /usr/lib/python3.5
